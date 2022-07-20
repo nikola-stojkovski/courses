@@ -1,6 +1,7 @@
 using Courses.Core.Application;
 using Courses.Core.Contracts;
 using Courses.Infrastructure.Persistence;
+using Courses.Presentation.WebApi.Middlewares;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +35,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
+
+ErrorHandlerMiddlewareExtensions.UseErrorHandlerMiddleware(app);
 
 app.UseHttpsRedirection();
 
