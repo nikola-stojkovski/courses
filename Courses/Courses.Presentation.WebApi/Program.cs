@@ -1,4 +1,5 @@
 using Courses.Core.Application;
+using Courses.Core.Contracts;
 using Courses.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,12 +10,12 @@ ConfigurationManager configuration = builder.Configuration;
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplication();
 builder.Services.AddPersistence(configuration);
+builder.Services.AddContracts();
 
 #region API Versioning
 builder.Services.AddApiVersioning(config =>

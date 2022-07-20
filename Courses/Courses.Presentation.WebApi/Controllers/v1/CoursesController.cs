@@ -1,6 +1,8 @@
 namespace Courses.Presentation.WebApi.Controllers.v1
 {
     using System.Net;
+    using Courses.Core.Application.Features.CourseFeatures.Queries;
+    using Courses.Core.Contracts.Models.Course;
     using Courses.Infrastructure.Persistence.Context;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
@@ -18,11 +20,11 @@ namespace Courses.Presentation.WebApi.Controllers.v1
             _applicationDbContext = applicationDbContext;
         }
 
-        [HttpGet("courses")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<IEnumerable<DateTime>>))]
-        public async Task<IEnumerable<IEnumerable<DateTime>>> GetCourses()
+        [HttpGet("")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<CourseDto>))]
+        public async Task<IActionResult> GetCourses()
         {
-            return await _applicationDbContext.Courses.Select(x => x.Dates).ToArrayAsync();
+            return Ok(await Mediator.Send(new GetCoursesQuery()));
         }
     }
 }
