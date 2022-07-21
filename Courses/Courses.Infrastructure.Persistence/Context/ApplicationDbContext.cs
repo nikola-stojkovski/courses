@@ -12,6 +12,7 @@
 
         public DbSet<Course> Courses { get; set; }
         public DbSet<Application> Applications { get; set; }
+        public DbSet<Participant> Participants { get; set; }
 
         async Task<int> IApplicationDbContext.SaveChanges()
         {
