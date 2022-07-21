@@ -1,6 +1,7 @@
 ﻿namespace Courses.Core.Domain.Entities
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using Courses.Core.Domain.Common;
 
@@ -25,5 +26,7 @@
         public int CourseId { get; set; }
 
         public virtual Course Course { get; set; }
+
+        public virtual ICollection<Participant> Participants { get; set; }
     }
 }

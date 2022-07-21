@@ -10,6 +10,8 @@
 
         DbSet<Application> Applications { get; set; }
 
+        DbSet<Participant> Participants { get; set; }
+
         Task<int> SaveChanges();
     }
 }
