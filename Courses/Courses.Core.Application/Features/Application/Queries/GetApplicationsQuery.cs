@@ -10,7 +10,7 @@
 
     public class GetApplicationsQuery : IRequest<IEnumerable<ApplicationDto>>
     {
-        public Guid CourseUid { get; set; }
+        public Guid CourseUid { get; }
 
         public GetApplicationsQuery(Guid courseUid)
         {

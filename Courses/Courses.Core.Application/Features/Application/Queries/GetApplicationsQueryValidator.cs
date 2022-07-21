@@ -23,7 +23,7 @@
 
         private async Task<bool> ExistCourse(Guid courseUid, CancellationToken cancellationToken)
         {
-            return await _coursesRepository.CheckCourseExist(courseUid);
+            return await _coursesRepository.CheckCourseExistAsync(courseUid);
         }
     }
 }

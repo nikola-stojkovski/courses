@@ -28,6 +28,14 @@
             return courses;
         }
 
+        public async Task<Course> GetCourseAsync(Guid courseUid)
+        {
+            Course course = await _dbContext.Courses.AsNoTracking()
+                                                    .SingleOrDefaultAsync(x => x.Uid == courseUid);
+
+            return course;
+        }
+
         public async Task<Guid> CreateCourseAsync(string name, IList<DateTime> dates)
         {
             Course course = new()
@@ -44,7 +52,7 @@
             return course.Uid;
         }
 
-        public async Task<bool> CheckCourseExist(Guid courseUid)
+        public async Task<bool> CheckCourseExistAsync(Guid courseUid)
         {
             return await _dbContext.Courses.AsNoTracking()
                                            .AnyAsync(x => x.Uid == courseUid);

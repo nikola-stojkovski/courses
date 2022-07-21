@@ -1,23 +1,27 @@
 ﻿namespace Courses.Core.Contracts.Models.Application
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using Courses.Core.Contracts.Models.Common;
+    using System.ComponentModel.DataAnnotations;
     using Courses.Core.Contracts.Models.Participant;
 
-    public class ApplicationDto : RestBase
+    public class CreateApplicationRequest
     {
-        public string CourseName { get; set; }
-
+        [Required]
         public DateTime CourseDate { get; set; }
 
+        [Required]
         public string CompanyName { get; set; }
-
+        
+        [Required]
+        [Phone]
         public string CompanyNumber { get; set; }
 
+        [Required]
+        [EmailAddress]
         public string CompanyEmail { get; set; }
 
-        public IEnumerable<ParticipantDto> Participants { get; set; }
+        [Required]
+        public IList<CreateParticipantRequest> ParticipantsRequests { get; set; }
     }
 }

@@ -2,20 +2,17 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Courses.Core.Contracts;
-    using Courses.Core.Contracts.Exceptions;
     using Courses.Core.Contracts.Interfaces;
     using Courses.Core.Contracts.Models.Course;
     using MediatR;
 
     public class CreateCourseCommand : IRequest<Guid>
     {
-        public string Name { get; set; }
+        public string Name { get; }
 
-        public IList<DateTime> Dates { get; set; }
+        public IList<DateTime> Dates { get; }
 
         public CreateCourseCommand(CreateCourseRequest request)
         {
