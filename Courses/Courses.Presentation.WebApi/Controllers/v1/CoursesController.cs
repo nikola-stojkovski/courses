@@ -1,13 +1,14 @@
 namespace Courses.Presentation.WebApi.Controllers.v1
 {
     using System.Net;
-    using Courses.Core.Application.Features.CourseFeatures.Commands;
-    using Courses.Core.Application.Features.CourseFeatures.Queries;
+    using Courses.Core.Application.Features.Course.Commands;
+    using Courses.Core.Application.Features.Course.Queries;
     using Courses.Core.Contracts.Models.Course;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.AspNetCore.Annotations;
 
     [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/courses")]
     public class CoursesController : BaseApiController
     {
         [HttpGet("")]

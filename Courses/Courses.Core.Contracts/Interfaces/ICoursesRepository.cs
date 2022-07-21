@@ -10,7 +10,7 @@
         /// <summary>
         /// Returns all courses.
         /// </summary>
-        Task<IEnumerable<CourseDto>> GetCourseDtos();
+        Task<IEnumerable<CourseDto>> GetCoursesAsync();
 
         /// <summary>
         /// Creates course in the db.
@@ -18,6 +18,6 @@
         /// <param name="name">Name of the course.</param>
         /// <param name="dates">Dates for the course.</param>
         /// <returns>Uid of the course.</returns>
-        Task<Guid> CreateCourse(string name, IList<DateTime> dates);
+        Task<Guid> CreateCourseAsync(string name, IList<DateTime> dates);
     }
 }

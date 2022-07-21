@@ -19,6 +19,7 @@
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 
             services.AddScoped<ICoursesRepository, CoursesRepository>();
+            services.AddScoped<IApplicationsRepository, ApplicationsRepository>();
         }
     }
 }
