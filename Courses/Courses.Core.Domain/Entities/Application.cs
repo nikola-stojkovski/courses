@@ -28,5 +28,10 @@
         public virtual Course Course { get; set; }
 
         public virtual ICollection<Participant> Participants { get; set; }
+
+        public Application()
+        {
+            Participants = new List<Participant>();
+        }
     }
 }

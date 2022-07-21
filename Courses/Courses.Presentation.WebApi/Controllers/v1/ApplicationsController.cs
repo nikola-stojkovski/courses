@@ -1,6 +1,7 @@
 ﻿namespace Courses.Presentation.WebApi.Controllers.v1
 {
     using System.Net;
+    using Courses.Core.Application.Features.Application.Commands;
     using Courses.Core.Application.Features.Application.Queries;
     using Courses.Core.Contracts.Models.Application;
     using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,13 @@
         public async Task<IActionResult> GetApplications([FromRoute] Guid courseUid)
         {
             return Ok(await Mediator.Send(new GetApplicationsQuery(courseUid)));
+        }
+
+        [HttpPost("")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(Guid))]
+        public async Task<IActionResult> CreateApplication([FromRoute] Guid courseUid, [FromBody] CreateApplicationRequest request)
+        {
+            return Ok(await Mediator.Send(new CreateApplicationCommand(courseUid: courseUid, request: request)));
         }
     }
 }
