@@ -43,5 +43,11 @@
 
             return course.Uid;
         }
+
+        public async Task<bool> CheckCourseExist(Guid courseUid)
+        {
+            return await _dbContext.Courses.AsNoTracking()
+                                           .AnyAsync(x => x.Uid == courseUid);
+        }
     }
 }

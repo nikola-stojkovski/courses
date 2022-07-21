@@ -2,6 +2,7 @@
 {
     using System.Net;
     using Courses.Core.Application.Features.Application.Queries;
+    using Courses.Core.Contracts.Models.Application;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.AspNetCore.Annotations;
 
@@ -10,7 +11,7 @@
     public class ApplicationsController : BaseApiController
     {
         [HttpGet("")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<int>))]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<ApplicationDto>))]
         public async Task<IActionResult> GetApplications([FromRoute] Guid courseUid)
         {
             return Ok(await Mediator.Send(new GetApplicationsQuery(courseUid)));

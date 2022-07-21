@@ -14,9 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddContracts();
 builder.Services.AddApplication();
 builder.Services.AddPersistence(configuration);
-builder.Services.AddContracts();
 
 #region API Versioning
 builder.Services.AddApiVersioning(config =>

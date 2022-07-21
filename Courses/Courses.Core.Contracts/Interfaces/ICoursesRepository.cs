@@ -19,5 +19,11 @@
         /// <param name="dates">Dates for the course.</param>
         /// <returns>Uid of the course.</returns>
         Task<Guid> CreateCourseAsync(string name, IList<DateTime> dates);
+
+        /// <summary>
+        /// Checks if the course with provided Uid exist in the system.
+        /// </summary>
+        /// <param name="courseUid">Course Uid.</param>
+        Task<bool> CheckCourseExist(Guid courseUid);
     }
 }

@@ -35,15 +35,8 @@
 
         public async Task<Guid> Handle(CreateCourseCommand command, CancellationToken cancellationToken)
         {
-            bool anyDuplicateDate = command.Dates.GroupBy(x => x.Date).Any(x => x.Count() > 1);
-            
-            if (anyDuplicateDate)
-            {
-                throw new InvalidValueException(ErrorMessages.INVALID_COURSE_DATES);
-            }
-
             Guid courseUid = await _coursesRepository.CreateCourseAsync(name: command.Name,
-                                                                   dates: command.Dates);
+                                                                        dates: command.Dates);
 
             return courseUid;
         }
