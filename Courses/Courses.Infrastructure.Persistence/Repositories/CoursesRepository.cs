@@ -19,7 +19,7 @@
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CourseDto>> GetCourseDtos()
+        public async Task<IEnumerable<CourseDto>> GetCoursesAsync()
         {
             IEnumerable<CourseDto> courses = await _dbContext.Courses.AsNoTracking()
                                                                      .ProjectTo<CourseDto>(_mapper.ConfigurationProvider)
@@ -28,7 +28,7 @@
             return courses;
         }
 
-        public async Task<Guid> CreateCourse(string name, IList<DateTime> dates)
+        public async Task<Guid> CreateCourseAsync(string name, IList<DateTime> dates)
         {
             Course course = new()
             {

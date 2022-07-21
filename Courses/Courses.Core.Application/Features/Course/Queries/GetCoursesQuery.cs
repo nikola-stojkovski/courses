@@ -1,4 +1,4 @@
-﻿namespace Courses.Core.Application.Features.CourseFeatures.Queries
+﻿namespace Courses.Core.Application.Features.Course.Queries
 {
     using System.Collections.Generic;
     using System.Threading;
@@ -20,9 +20,9 @@
             _coursesRepository = coursesRepository;
         }
 
-        public async Task<IEnumerable<CourseDto>> Handle(GetCoursesQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<CourseDto>> Handle(GetCoursesQuery query, CancellationToken cancellationToken)
         {
-            IEnumerable<CourseDto> courses = await _coursesRepository.GetCourseDtos();
+            IEnumerable<CourseDto> courses = await _coursesRepository.GetCoursesAsync();
 
             return courses;
         }

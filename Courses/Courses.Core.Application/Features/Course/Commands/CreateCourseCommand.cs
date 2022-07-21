@@ -1,4 +1,4 @@
-﻿namespace Courses.Core.Application.Features.CourseFeatures.Commands
+﻿namespace Courses.Core.Application.Features.Course.Commands
 {
     using System;
     using System.Collections.Generic;
@@ -42,7 +42,7 @@
                 throw new InvalidValueException(ErrorMessages.INVALID_COURSE_DATES);
             }
 
-            Guid courseUid = await _coursesRepository.CreateCourse(name: command.Name,
+            Guid courseUid = await _coursesRepository.CreateCourseAsync(name: command.Name,
                                                                    dates: command.Dates);
 
             return courseUid;

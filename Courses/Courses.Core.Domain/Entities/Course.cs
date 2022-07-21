@@ -12,5 +12,7 @@
 
         [Required]
         public IList<DateTime> Dates { get; set; }
+
+        public virtual ICollection<Application> Applications { get; set; }
     }
 }

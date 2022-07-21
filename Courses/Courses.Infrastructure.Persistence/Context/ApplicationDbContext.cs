@@ -11,6 +11,7 @@
         }
 
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Application> Applications { get; set; }
 
         async Task<int> IApplicationDbContext.SaveChanges()
         {
@@ -52,6 +53,7 @@
         private static void SetQueryFilter(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Course>().HasQueryFilter(x => EF.Property<DateTime>(x, "DeletedOn") == null);
+            modelBuilder.Entity<Application>().HasQueryFilter(x => EF.Property<DateTime>(x, "DeletedOn") == null);
         }
     }
 }
