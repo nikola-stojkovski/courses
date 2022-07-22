@@ -24,7 +24,7 @@
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ApplicationDto>> GetApplicationsAsync(Guid courseUid)
+        public async Task<IReadOnlyList<ApplicationDto>> GetApplicationsAsync(Guid courseUid)
         {
             IQueryable<Application> applicationsQuery = from dbCourse in _dbContext.Courses.AsNoTracking()
                                                                                            .Where(x => x.Uid == courseUid)
@@ -32,8 +32,8 @@
                                                         on dbCourse.Id equals dbApplication.CourseId
                                                         select dbApplication;
 
-            IEnumerable<ApplicationDto> applications = await applicationsQuery.ProjectTo<ApplicationDto>(_mapper.ConfigurationProvider)
-                                                                              .ToArrayAsync();
+            IReadOnlyList<ApplicationDto> applications = await applicationsQuery.ProjectTo<ApplicationDto>(_mapper.ConfigurationProvider)
+                                                                                .ToArrayAsync();
 
             return applications;
         }

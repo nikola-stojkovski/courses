@@ -4,6 +4,7 @@
     using Courses.Core.Contracts.Settings;
     using Courses.Infrastructure.Persistence.Context;
     using Courses.Infrastructure.Persistence.Repositories;
+    using Courses.Infrastructure.Persistence.Seed;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,8 @@
 
             services.AddScoped<ICoursesRepository, CoursesRepository>();
             services.AddScoped<IApplicationsRepository, ApplicationsRepository>();
+
+            services.AddScoped<IDataSeeder, DataSeeder>();
         }
     }
 }

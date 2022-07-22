@@ -19,11 +19,11 @@
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CourseDto>> GetCoursesAsync()
+        public async Task<IReadOnlyList<CourseDto>> GetCoursesAsync()
         {
-            IEnumerable<CourseDto> courses = await _dbContext.Courses.AsNoTracking()
-                                                                     .ProjectTo<CourseDto>(_mapper.ConfigurationProvider)
-                                                                     .ToArrayAsync();
+            IReadOnlyList<CourseDto> courses = await _dbContext.Courses.AsNoTracking()
+                                                                       .ProjectTo<CourseDto>(_mapper.ConfigurationProvider)
+                                                                       .ToArrayAsync();
 
             return courses;
         }
