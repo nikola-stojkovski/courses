@@ -11,7 +11,7 @@
         /// <summary>
         /// Returns all courses.
         /// </summary>
-        Task<IEnumerable<CourseDto>> GetCoursesAsync();
+        Task<IReadOnlyList<CourseDto>> GetCoursesAsync();
 
         /// <summary>
         /// Returns specific course.

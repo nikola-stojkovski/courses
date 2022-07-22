@@ -12,7 +12,7 @@ namespace Courses.Presentation.WebApi.Controllers.v1
     public class CoursesController : BaseApiController
     {
         [HttpGet("")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<CourseDto>))]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IReadOnlyList<CourseDto>))]
         public async Task<IActionResult> GetCourses()
         {
             return Ok(await Mediator.Send(new GetCoursesQuery()));

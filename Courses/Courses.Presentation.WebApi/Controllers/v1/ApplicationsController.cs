@@ -12,7 +12,7 @@
     public class ApplicationsController : BaseApiController
     {
         [HttpGet("")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<ApplicationDto>))]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IReadOnlyList<ApplicationDto>))]
         public async Task<IActionResult> GetApplications([FromRoute] Guid courseUid)
         {
             return Ok(await Mediator.Send(new GetApplicationsQuery(courseUid)));

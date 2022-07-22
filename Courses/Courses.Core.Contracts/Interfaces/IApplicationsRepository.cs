@@ -13,7 +13,7 @@
         /// Returns all applications for the specific course.
         /// </summary>
         /// <param name="courseUid">Course udi.</param>
-        Task<IEnumerable<ApplicationDto>> GetApplicationsAsync(Guid courseUid);
+        Task<IReadOnlyList<ApplicationDto>> GetApplicationsAsync(Guid courseUid);
 
         /// <summary>
         /// Creates application with participants for course on specific date.
